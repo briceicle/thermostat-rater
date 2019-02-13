@@ -6,6 +6,9 @@ public class HomeOwner {
   private String location;
   private double rvalue;
 
+  public HomeOwner() {
+  }
+
   public HomeOwner(String name, String location, double rvalue) {
     this.name = name;
     this.location = location;
