@@ -276,4 +276,64 @@ public class RaterTest {
 
     assertEquals(10, rater.computeRating("John Doe", "Canada"));
   }
+
+  @Test
+  public void testComputeRatingMidRangePercent() {
+    Map<String, Owner> owners = new HashMap<String, Owner>();
+    Map<String, Region> regions = new HashMap<String, Region>();
+    ArrayList<Double> rvalues = new ArrayList<Double>();
+    Owner owner = new Owner("John Doe", "Canada/Ontario/Toronto", 3.0);
+    Region region = new Region("Canada");
+
+    for (int i = 0; i < 5; i++) {
+      region.addRValue(2.0);
+    }
+    for (int i = 0; i < 6; i++) {
+      region.addRValue(5.0);
+    }
+    owners.put(owner.getName(), owner);
+    regions.put(region.getName(), region);
+
+    Rater rater = new Rater(owners, regions);
+
+    assertEquals(5, rater.computeRating("John Doe", "Canada"));
+  }
+
+  @Test
+  public void testComputeRatingOutofRangePercent() {
+    Map<String, Owner> owners = new HashMap<String, Owner>();
+    Map<String, Region> regions = new HashMap<String, Region>();
+    ArrayList<Double> rvalues = new ArrayList<Double>();
+    Owner owner = new Owner("John Doe", "Canada/Ontario/Toronto", 3.0);
+    Region region = new Region("Canada");
+
+    for (int i = 0; i < 10; i++) {
+      region.addRValue(5.0);
+    }
+    owners.put(owner.getName(), owner);
+    regions.put(region.getName(), region);
+
+    Rater rater = new Rater(owners, regions);
+
+    assertEquals(-1, rater.computeRating("John Doe", "Canada"));
+  }
+
+  @Test
+  public void testComputeRatingAllSameRValues() {
+    Map<String, Owner> owners = new HashMap<String, Owner>();
+    Map<String, Region> regions = new HashMap<String, Region>();
+    ArrayList<Double> rvalues = new ArrayList<Double>();
+    Owner owner = new Owner("John Doe", "Canada/Ontario/Toronto", 3.0);
+    Region region = new Region("Canada");
+
+    for (int i = 0; i < 10; i++) {
+      region.addRValue(3.0);
+    }
+    owners.put(owner.getName(), owner);
+    regions.put(region.getName(), region);
+
+    Rater rater = new Rater(owners, regions);
+
+    assertEquals(10, rater.computeRating("John Doe", "Canada"));
+  }
 }
