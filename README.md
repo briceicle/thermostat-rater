@@ -3,7 +3,7 @@
 In order to complete the challenge, I made the following assumptions:
 - Any pair that appears in the `query` section is valid and rating can be calculated for it
 - Customers names in the `input` section are unique
-- The inputs (name, location, rvalue) always have the specified format, so implemented minimal input validation
+- The inputs (name, location, rvalue) always have the specified formats, so I implemented minimal input validation
 - Didn't use any build tool (e.g. Maven, Gradle) to keep the folder structure simple
 
 ## Setup
