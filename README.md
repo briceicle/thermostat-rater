@@ -12,7 +12,7 @@ The following setup instructions are for `Mac OS X`
   - `git clone https://github.com/briceicle/thermostat-rater`
   
 ## Folder Structure
-- src
+- /src
   - Main.java&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---> Entry point of the program
   - Owner.java&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---> Class that encapsulates a thermostat owner
   - OwnerTest.java ---> Unit test for Owner class
@@ -33,4 +33,5 @@ You can store your input in a text file (e.g. `input.txt`) and pipe it to java s
 In the current directory, run the following commands to compile, then execute a specific test:
   - `javac -cp .:junit-4.13-beta-2.jar:hamcrest-core-1.3.jar RaterTest.java`
   - `java -cp .:junit-4.13-beta-2.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore RaterTest`
+  
  You can replace `RaterTest` in the above commands with any other test class
