@@ -41,10 +41,10 @@ public class Rater {
     double rvalue = this.owners.get(name).getRValue();
     ArrayList<Double> rvalues = this.regions.get(regionKey);
 
-    // Calculate % of homes with better insulation
+    // Calculate percentage of homes with better insulation
     double percent = calculatePercentage(rvalues, rvalue);
 
-    // Check % against ranges, and return rating
+    // Determine the rating based on the percentage
     int rating = determineRating(percent);
 
     return rating;
