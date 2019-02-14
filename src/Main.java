@@ -19,7 +19,7 @@ public class Main {
       String location = matcher.group(3).replace("\"", "");
       double rvalue = Double.parseDouble(matcher.group(5));
 
-      initialize(name, location, rvalue);
+      initializeDataSet(name, location, rvalue);
     }
   }
 
@@ -36,35 +36,34 @@ public class Main {
     }
   }
 
-  private static void initialize(String name, String location, double rvalue) {
+  private static void initializeDataSet(String name, String location, double rvalue) {
     Owner owner = new Owner(name, location, rvalue);
     rater.addOwner(owner);
 
-    String[] locationParts = location.split("/");
-    String regionKey = locationParts[0];
+    String[] splits = location.split("/"); // assuming location always has format: <country>/<state>/<city>
+    String regionKey = splits[0];
     rater.mapRValue(regionKey, rvalue);
     
-    for (int i = 1; i < locationParts.length; i++) {
-      regionKey = regionKey + '/' + locationParts[i];
+    for (int i = 1; i < splits.length; i++) {
+      regionKey = regionKey + '/' + splits[i];
       rater.mapRValue(regionKey, rvalue);
     }
   }
 
   public static void main(String[] args) throws IOException {
-    // read data section
+    boolean foundEmptyLine = false;
+
     while (scanner.hasNextLine()) {
       String line = scanner.nextLine();
       if (line.equals("")) {
-        break; // skip empty line
+        foundEmptyLine = true;
+        continue; // skip empty line
+      }
+      if (foundEmptyLine) {
+        processQuery(line);
       } else {
         processInput(line);
       }
-    }
-
-    // read query section
-    while (scanner.hasNextLine()) {
-      String line = scanner.nextLine();
-      processQuery(line);
     }
 
     scanner.close();
