@@ -11,6 +11,11 @@ public class Region {
     this.rvalues = new ArrayList<Double>();
   }
 
+  public Region(String name) {
+    this.name = name;
+    this.rvalues = new ArrayList<Double>();
+  }
+
   public Region(String name, ArrayList<Double> values) {
     this.name = name;
     this.rvalues = values;
