@@ -4,16 +4,16 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class Rater {
-  // list of home owners, keyed by owner name
+  // list of all owners, keyed by owner name
   private Map<String, Owner> owners;
 
-  // map of region to list of rvalues in that region
-  private Map<String, ArrayList<Double>> regions;
+  // list of all regions, keyed by region name
+  private Map<String, Region> regions;
 
 
   public Rater() {
     this.owners = new HashMap<String, Owner>();
-    this.regions = new HashMap<String, ArrayList<Double>>();
+    this.regions = new HashMap<String, Region>();
   }
 
   public void addOwner(Owner owner) {
@@ -25,24 +25,24 @@ public class Rater {
   }
 
   public void addRegionRValue(String regionKey, double rvalue) {
-    ArrayList<Double> region = this.regions.get(regionKey);
+    Region region = this.regions.get(regionKey);
     if (region == null) {
-      region = new ArrayList<Double>();
+      region = new Region();
       this.regions.put(regionKey, region);
     }
-    region.add(rvalue);
+    region.addRValue(rvalue);
   }
 
-  public Map<String, ArrayList<Double>> getRegions() {
+  public Map<String, Region> getRegions() {
     return this.regions;
   }
 
   public int getRating(String name, String regionKey) {
     double rvalue = this.owners.get(name).getRValue();
-    ArrayList<Double> rvalues = this.regions.get(regionKey);
+    ArrayList<Double> rvalues = this.regions.get(regionKey).getRValues();
 
     // Calculate percentage of homes with better insulation
-    double percent = calculatePercentage(rvalues, rvalue);
+    double percent = calculatePercentage(rvalue, rvalues);
 
     // Determine the rating based on the percentage
     int rating = determineRating(percent);
@@ -50,7 +50,7 @@ public class Rater {
     return rating;
   }
 
-  private double calculatePercentage(ArrayList<Double> rvalues, double rvalue) {
+  private double calculatePercentage(double rvalue, ArrayList<Double> rvalues) {
     double count = 0;
     double percent = 0.0;
 
