@@ -6,9 +6,20 @@ In order to complete the challenge, I made the following assumptions:
 - Didn't use any build tool (e.g. Maven, Gradle) to keep the folder structure simple
 
 ## Setup
+The following setup instructions are for `Mac OS X`
 - Install [Java SDK 8](https://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html)
 - Clone the repo
   - `git clone https://github.com/briceicle/thermostat-rater`
+  
+## Folder Structure
+- src
+  - Main.java&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---> Entry point of the program
+  - Owner.java&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---> Class that encapsulates a thermostat owner
+  - OwnerTest.java ---> Unit test for Owner class
+  - Rater.java&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---> Class that encapsulates functionality to rate a home
+  - RaterTest.java&nbsp;&nbsp;&nbsp;---> Unit test for Rater class
+  - Region.java&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;---> Class that encapsulates a region and all its R-values
+  - RegionTest.java  ---> Unit test for Region class
 
 ## Run program
 In the current directory, run the following commands to compile, then execute:
