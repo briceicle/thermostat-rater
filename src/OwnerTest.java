@@ -36,7 +36,7 @@ public class OwnerTest {
 
   @Test
   public void testSetRValue() {
-    Owner homeOwner = new Owner("abc", "cde", 0.0);
+    Owner owner = new Owner("abc", "cde", 0.0);
     owner.setRValue(1.0);
     assertEquals(1.0, owner.getRValue(), 0);
   }
