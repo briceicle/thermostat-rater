@@ -3,24 +3,24 @@ import java.util.Map;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class HomeRater {
+public class Rater {
   // list of home owners, keyed by owner name
-  private Map<String, HomeOwner> owners;
+  private Map<String, Owner> owners;
 
   // map of region to list of rvalues in that region
   private Map<String, ArrayList<Double>> regions;
 
 
-  public HomeRater() {
-    this.owners = new HashMap<String, HomeOwner>();
+  public Rater() {
+    this.owners = new HashMap<String, Owner>();
     this.regions = new HashMap<String, ArrayList<Double>>();
   }
 
-  public void addHomeOwner(HomeOwner owner) {
+  public void addOwner(Owner owner) {
     this.owners.put(owner.getName(), owner);
   }
 
-  public HomeOwner getHomeOwner(String name) {
+  public Owner getOwner(String name) {
     return this.owners.get(name);
   }
 
@@ -37,7 +37,7 @@ public class HomeRater {
     return this.regions;
   }
 
-  public int rate(String name, String regionKey) {
+  public int getRating(String name, String regionKey) {
     double rvalue = this.owners.get(name).getRValue();
     ArrayList<Double> rvalues = this.regions.get(regionKey);
 

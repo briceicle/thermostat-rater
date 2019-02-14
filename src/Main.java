@@ -7,7 +7,7 @@ import java.util.Arrays;
 
 public class Main {
   private static final Scanner scanner = new Scanner(System.in);
-  private static HomeRater homeRater = new HomeRater();
+  private static Rater rater = new Rater();
 
   private static void processInput(String line) {
     String regex = "(\"[\\w\\s]+\")([\\s]+)(\"[\\w\\s/]+\")([\\s]+)([0-9]*\\.[0-9]+|[0-9]+)";
@@ -32,21 +32,21 @@ public class Main {
       String name = matcher.group(1).replace("\"", "");
       String region = matcher.group(3).replace("\"", "");
 
-      System.out.println(line + " " + homeRater.rate(name, region));
+      System.out.println(line + " " + rater.getRating(name, region));
     }
   }
 
   private static void initialize(String name, String location, double rvalue) {
-    HomeOwner owner = new HomeOwner(name, location, rvalue);
-    homeRater.addHomeOwner(owner);
+    Owner owner = new Owner(name, location, rvalue);
+    rater.addOwner(owner);
 
     String[] locationParts = location.split("/");
     String regionKey = locationParts[0];
-    homeRater.addRegionRValue(regionKey, rvalue);
+    rater.addRegionRValue(regionKey, rvalue);
     
     for (int i = 1; i < locationParts.length; i++) {
       regionKey = regionKey + '/' + locationParts[i];
-      homeRater.addRegionRValue(regionKey, rvalue);
+      rater.addRegionRValue(regionKey, rvalue);
     }
   }
 

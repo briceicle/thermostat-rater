@@ -1,15 +1,15 @@
 import java.io.*;
 import java.util.Scanner;
 
-public class HomeOwner {
+public class Owner {
   private String name;
   private String location;
   private double rvalue;
 
-  public HomeOwner() {
+  public Owner() {
   }
 
-  public HomeOwner(String name, String location, double rvalue) {
+  public Owner(String name, String location, double rvalue) {
     this.name = name;
     this.location = location;
     this.rvalue = rvalue;
