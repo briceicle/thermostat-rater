@@ -32,7 +32,7 @@ public class Main {
       String name = matcher.group(1).replace("\"", "");
       String region = matcher.group(3).replace("\"", "");
 
-      System.out.println(line + " " + rater.getRating(name, region));
+      System.out.println(line + " " + rater.computeRating(name, region));
     }
   }
 
@@ -42,11 +42,11 @@ public class Main {
 
     String[] locationParts = location.split("/");
     String regionKey = locationParts[0];
-    rater.addRegionRValue(regionKey, rvalue);
+    rater.mapRValue(regionKey, rvalue);
     
     for (int i = 1; i < locationParts.length; i++) {
       regionKey = regionKey + '/' + locationParts[i];
-      rater.addRegionRValue(regionKey, rvalue);
+      rater.mapRValue(regionKey, rvalue);
     }
   }
 

@@ -16,6 +16,11 @@ public class Rater {
     this.regions = new HashMap<String, Region>();
   }
 
+  public Rater(Map<String, Owner> owners, Map<String, Region> regions) {
+    this.owners = owners;
+    this.regions = regions;
+  }
+
   public void addOwner(Owner owner) {
     this.owners.put(owner.getName(), owner);
   }
@@ -24,10 +29,11 @@ public class Rater {
     return this.owners.get(name);
   }
 
-  public void addRegionRValue(String regionKey, double rvalue) {
+  public void mapRValue(String regionKey, double rvalue) {
     Region region = this.regions.get(regionKey);
     if (region == null) {
       region = new Region();
+      region.setName(regionKey);
       this.regions.put(regionKey, region);
     }
     region.addRValue(rvalue);
@@ -37,7 +43,7 @@ public class Rater {
     return this.regions;
   }
 
-  public int getRating(String name, String regionKey) {
+  public int computeRating(String name, String regionKey) {
     double rvalue = this.owners.get(name).getRValue();
     ArrayList<Double> rvalues = this.regions.get(regionKey).getRValues();
 
