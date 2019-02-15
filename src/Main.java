@@ -10,7 +10,7 @@ public class Main {
   private static Rater rater = new Rater();
 
   private static void processInput(String line) {
-    String regex = "(\"[\\w\\s]+\")([\\s]+)(\"[\\w\\s/]+\")([\\s]+)([0-9]*\\.[0-9]+|[0-9]+)";
+    String regex = "(\"[\\w\\s@#$%^&*.'/]+\")([\\s]+)(\"[\\w\\s@#$%^&*.'/]+\")([\\s]+)([0-9]*\\.[0-9]+|[0-9]+)";
     Pattern pattern = Pattern.compile(regex);
     Matcher matcher = pattern.matcher(line);
 
@@ -24,7 +24,7 @@ public class Main {
   }
 
   private static void processQuery(String line) {
-    String regex = "(\"[\\w\\s]+\")([\\s]+)(\"[\\w\\s/]+\")";
+    String regex = "(\"[\\w\\ss@#$%^&*.'/]+\")([\\s]+)(\"[\\w\\s/s@#$%^&*.'/]+\")";
     Pattern pattern = Pattern.compile(regex);
     Matcher matcher = pattern.matcher(line);
 
