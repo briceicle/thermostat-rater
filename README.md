@@ -23,7 +23,7 @@ The following setup instructions are for `Mac OS X`
   - RegionTest.java  ---> Unit test for Region class
 
 ## Run program
-In the current directory, run the following commands to compile, then execute:
+In the `/scr` directory, run the following commands to compile, then execute:
   - `javac Main.java`
   - `java Main`
   
@@ -31,7 +31,7 @@ You can store your input in a text file (e.g. `input.txt`) and pipe it to java s
   - `cat input.txt | java Main`
 
 ## Run unit tests
-In the current directory, run the following commands to compile, then execute a specific test:
+In the `/scr` directory, run the following commands to compile, then execute a specific test:
   - `javac -cp .:junit-4.13-beta-2.jar:hamcrest-core-1.3.jar RaterTest.java`
   - `java -cp .:junit-4.13-beta-2.jar:hamcrest-core-1.3.jar org.junit.runner.JUnitCore RaterTest`
   
